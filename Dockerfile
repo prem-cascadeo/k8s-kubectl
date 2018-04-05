@@ -19,6 +19,10 @@ RUN apk add --update ca-certificates \
  && chmod +x /usr/local/bin/kubectl \
  && apk del --purge deps \
  && rm /var/cache/apk/*
+ 
+# install openssl
+RUN apk add --update openssl && \
+  rm -rf /var/cache/apk/*
 
 WORKDIR /root
 ENTRYPOINT ["kubectl"]
